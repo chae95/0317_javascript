@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function searchID() {
+//		getElementById() 함수는 인수로 지정된 id 속성의 첫 번째 요소 1개를 찾는다.
+		var doc = document.getElementById('test');
+		doc.innerHTML = 'getElementById() 함수는 DOM에서 id 속성을 탐색한다.';
+		doc.style.backgroundColor = 'yellow';
+	}
+
+	function searchName() {
+//		getElementsByName() 함수는 인수로 지정된 name 속성의 모든 요소를 찾는다. => 결과는 배열로 얻어온다.	
+		var docs = document.getElementsByName('test');
+//		console.log(docs.length);
+
+//		docs[0].value = '홍길동';
+//		docs[1].value = '임꺽정';
+//		docs[2].value = '장길산';
+
+//		일반 for
+		var name = ['홍길동', '임꺽정', '장길산'];
+		for (var i = 0; i < docs.length; i++) {
+			docs[i].value = name[i];
+		}
+		
+		var name2 = ['손오공', '저팔계', '사오정'];
+//		향상된 for 1 => in을 사용하면 in 뒤에 지정된 객체의 인덱스가 in 앞의 변수에 전달된다.
+		for (var i in docs) {
+			docs[i].value += name2[i];
+		}
+
+		var name3 = ['베지터', '브루마', '트랭크스'];
+//		향상된 for 2 => of를 사용하면 of 뒤에 지정된 객체의 인덱스 번째 요소가 of 앞의 변수에 전달된다.
+		var i = 0;
+		for (var n of name3) {
+			docs[i++].value += n;
+		}
+
+		var name4 = ['마인부우', '프리자', '셀'];
+//		forEach() 함수 => forEach() 함수를 실행하는 객체의 첫 번째 요소부터 마지막 요소까지 차례대로 내부 익명 함수의 인수로 전달한다.
+		var i = 0;
+		docs.forEach(function(doc) {
+			doc.value += name4[i++];
+		});
+		
+		var name5 = ['무천도사', '크리닝', '피콜로'];
+//		화살표 함수(arrow function) => EC6에서 추가된 기능이다.
+//		익명 함수를 사용할 때 function 예약어를 생략하고 ()안에 인수만 적은 후 {} 블록대신 실행할 문장을 '=>' 뒤에 코딩한다.
+//		함수의 인수가 1개일 경우 ()를 쓰지 않고 인수만 적어도 된다.
+		var i = 0;
+		docs.forEach(doc => doc.value += name5[i++]);
+	}
+	
+	function searchTagName() {
+//		getElementsByTagName() 함수는 인수로 지정된 모든 태그 요소를 찾는다.
+//		getElementsByTagName() 함수를 실행하면 인수로 지정된 모든 태그 요소를 배열로 얻어오고 getElementsByTagName()[index] 형태로
+//		실행하면 지정된 index에 해당되는 요소만 얻어온다. getElementsByName() 함수도 동작원리는 getElementsByTagName() 함수와 같다.
+		var docs = document.getElementsByTagName('p');
+		for (var i = 0; i < docs.length; i++) {
+			docs[i].style.backgroundColor = 'yellow';
+		}
+		
+		var doc = document.getElementsByTagName('p')[3];
+		doc.style.backgroundColor = 'tomato';
+	}
+	
+	function searchCSSSelector() {
+//		querySelector() 함수는 css 선택자를 사용해 첫 번째 요소 1개를 찾는다. => id 속성 탐색에 주로 사용된다.
+//		querySelectorAll() 함수는 querySelector() 함수와 똑같이 요소를 찾지만 querySelector() 함수와의 차이점은
+//		모든 요소를 찾아온다는 것이다.
+//		querySelector(), querySelectorAll() 함수의 인수로 id는 '#'로 시작하게 class는 '.'으로 시작하게 태그는 아무것도
+//		앞에 붙이지 않고 지정한다.
+		var doc = document.querySelector('#test');		// id 요소 탐색
+		doc.innerHTML = 'querySelector() 함수를 이용한 탐색';
+		doc.style.color = 'red'
+		doc.style.backgroundColor = 'skyblue';
+		
+		var docs = document.querySelectorAll('.test');	// class 요소 탐색
+		for (var i = 0; i < docs.length; i++) {
+			docs[i].style.color = 'white';
+			docs[i].style.backgroundColor = 'black';
+		}
+		
+		var tags = document.querySelectorAll('p');		// tag 요소 탐색
+//		화살표 함수(arrow function)가 실행할 문장이 여러줄이면 {}로 묶어준다.
+		tags.forEach(tag => {
+			tag.style.color = 'cyan';
+			tag.style.backgroundColor = 'magenta';
+		});
+		
+//		id 탐색 : getElementById(), querySelector(#id)
+//		class 탐색 : querySelectorAll(.class)
+//		tag 탐색 : getElementsByTagName(), querySelectorAll(tag)
+//		name 탐색 : getElementsByName()
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<p onclick="searchCSSSelector()">
+		DOM(Document Object Model) 탐색 함수
+	</p>
+
+	<p id="test" class="test" onclick="searchID()">
+		1. getElementById() : 태그의 id 속성을 탐색한다.<br/>
+		&nbsp;&nbsp;&nbsp;같은 화면에 여러개의 id를 가지는 요소가 있다면 첫 번째 요소 1개만 선택된다.
+	</p>
+
+	<p id="test" class="test onclick="searchName()">
+		2. getElementsByName() : 태그의 name 속성을 탐색한다.<br/>
+		&nbsp;&nbsp;&nbsp;같은 화면에 여려개의 name 속성을 가지는 요소가 있다면 모두 선택된다. => nodelist<br/>
+		<input type="text" name="test" size="30"/><br/>
+		<input type="text" name="test" size="30"/><br/>
+		<input type="text" name="test" size="30"/>
+	</p>
+	
+	<p onclick="searchTagName()">
+		3. getElementsByTagName() : 태그의 태그 이름을 탐색한다.<br/>
+		&nbsp;&nbsp;&nbsp;같은 화면에 여려개의 같은 이름의 태그가 있다면 모두 선택된다. => nodelist
+	</p>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

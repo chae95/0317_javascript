@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function foodShow() {
+//		alert('foodShow()');
+		var doc = document.getElementsByName('food')[0];
+//		doc는 select 태그 객체이므로 length는 select 태그의 항목(option 태그)의 개수를 얻어온다.
+		console.log(doc.length);
+//		options : select 태그 내부의 option 태그 객체를 모아놓은 객체
+		console.log(doc.options);
+//		selectedIndex : 콤보 박스에서 선택된 항목의  index를 얻어온다. => index는 0부터 시작된다.
+		var idx = doc.selectedIndex;
+		console.log(idx);
+		var food = doc.options[idx].value;
+		console.log(food);
+	}
+
+	function foodShow2() {
+//		alert('foodShow2()');
+		var doc = document.getElementsByName('food')[1];
+		console.log(doc.length);
+		var str ='';
+		for (var i = 0; i < doc.length; i++){
+//			selected : 콤보박스나 리스트 박스에서 특정 항목이 선택되었으면 true, 그렇지 않으면 false
+			if (doc.options[i].selected){
+//				console.log(doc.options[i].value);
+				str += doc.options[i].value + ' ';
+			}
+		}
+		console.log(str);	
+	}
+	
+
+</script>
+</head>
+<body>
+
+	<p>
+		<!--  select 태그에서 어떤 option 요소가 선택되면 실행되는 -->
+		<select name="food" style="width: 150px;" onchange="foodShow()">
+			<option>햄버거</option>
+			<option>짜장면</option>
+			<option>탕수육</option>
+			<option>팔보채</option>
+			<option>양장피</option>		
+		</select>
+	</p>
+	<br/><br/>
+		
+	<p>
+		<!-- select 태그에 멀티플 속성을 지정하면 리스트 박스가 표시된다. =>size 옵션으로 추가-->
+		<select name="food" style="width: 150px;" multiple="multiple" size="5">
+			<option>햄버거</option>
+			<option>짜장면</option>
+			<option>탕수육</option>
+			<option>팔보채</option>
+			<option>양장피</option>		
+		</select>
+		<br/><input type="button" value="선택" onclick="foodShow2()"/>
+	</p>	
+	
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

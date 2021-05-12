@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function evalTest() {
+		var obj = document.getElementsByName('evalValue')[0];
+		console.log(obj);
+		console.log(obj.value);
+		console.log(typeof obj.value);
+		
+		if (confirm('연산식을 올바르게 입력했나요?\n입력한 연산식 : ' + obj.value)) {
+			
+//			eval() 함수는 인수로 지정된 문자열인 자바스크립트 코드를 실행한다.
+//			alert('계산을 시작합니다. - 1');
+//			eval('alert("계산을 시작합니다. - 2")');
+			document.getElementsByTagName('span')[0].innerHTML = '<h2>계산 결과 : ' + eval(obj.value) + '</h2>';
+			
+		} else {
+			obj.value = '';
+			obj.focus();
+		}
+	}
+
+	function calTest() {
+		var docs = document.querySelectorAll('.cal');
+		var str = '';
+		for (var doc of docs) {
+			console.log(doc.value);
+			str += doc.value;
+		}
+		console.log(str);
+		document.getElementsByTagName('span')[1].innerHTML = '<h2>계산 결과 : ' + eval(str) + '</h2>';
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<p>
+		<h2>문자열로된 코드를 읽어 자바스크립트로 실행하기</h2>
+		<input type="text" name="evalValue" placeholder="예) 5 + 10"/>
+		<input type="button" value="계산하기" onclick="evalTest()"/><br/>
+		<span></span>
+	</p>
+
+	<p>
+		<input class="cal" type="number"/>
+		<!-- list 속성으로 콤보 박스의 목록으로 사용할 datalist 태그의 id와 연결시킨다. -->
+		<input class="cal" type="text" list="calList"/>
+		<input class="cal" type="number"/>
+		<input type="button" value="계산하기" onclick="calTest()"/>
+		<span></span>
+	</p>
+
+	<!-- datalist 태그로 목록을 만들어 datalist 태그의 id를 text 상자에서 list 속성으로 연결하면 콤보 박스를 구현할 수 있다. -->
+	<datalist id="calList">
+		<option>+</option>
+		<option>-</option>
+		<option>*</option>
+		<option>/</option>
+	</datalist>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

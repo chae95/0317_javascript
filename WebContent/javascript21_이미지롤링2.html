@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+
+	a {
+		font-size: 100pt;
+		text-decoration: none;
+		color: black;		
+		position: relative;
+		top: 20px;
+	}
+	img {
+		border: 2px sold pink;
+		width : 300px;
+		height: 300px;
+		vertical-align: middle;
+		position: relative;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	onload = function() {
+
+		var archs = document.querySelectorAll('a');
+		var img = document.querySelector('img');
+		var count = 3;    
+
+		archs[0].onclick = function() {
+			if (--count < 1) {
+				count = 5;
+			}
+			img.setAttribute('alt', 'img0' + count)
+			img.setAttribute('src', './images/img0' + count + '.jpg');						
+			
+			
+		}
+			
+	
+		archs[1].onclick = () => {
+			if (++count > 5){
+				count = 1
+			}
+			img.setAttribute('alt', 'img0' + count)
+			img.setAttribute('src', './images/img0' + count + '.jpg');
+			
+		}
+			//리턴을 써야하나? 처음으로 돌아가려면?? 자바를 아예 모르니 ㅅㅂ 공부안한 내 자신밖에 원망할 게 없다.. 창의성 하나는 죽지 않았느데 모르겠다.모르겠다.
+			//내 자신에게 개빡치네 씨발 몇달 뒤 또 이런 기회가 올거같냐 
+			//카운트 자다가도 몇번 들었던 거 같은데 전혀 모르네 이해도 못하고 ㅅㅄㅄㅄㅄㅄㅄㅄㅄㅄㅄㅅㅂ 오늘 무조건 해결한다.
+			
+
+	}
+
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+
+	<div>
+		<a href="#" id="lt">◀</a>
+		<img src="./images/img03.jpg" alt="img03"/>
+		<a href="#" id="gt">▶</a>
+		
+	</div>
+
+
+</body>
+</html>

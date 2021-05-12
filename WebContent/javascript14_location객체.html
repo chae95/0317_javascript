@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function locationTest() {
+//		alert('locationTest()');
+//		location.href='http://www.naver.com';	
+	
+
+//		location.assign('http://www.naver.com');
+		
+		
+//		location 객체의 replace() 함수는 location.href, assign()와 같은 기능이 실행된다.
+//		location.href 또는 assign()를 사용했을 때는 돌아가기 버튼을 사용할 수 있지만 replace()는 돌아가기 버튼을 사용할 수 없다.
+		location.replace('http://www.naver.com');
+		
+	}
+
+
+
+
+</script>
+
+
+</head>
+<body>
+
+	<p>
+		<a href="http://www.naver.com">네이버로 이동</a><br/>
+		<button type="button" onclick="location.href='http://www.naver.com'">네이버로 이동</button><br/>
+		<button type="button" onclick="locationTest()">네이버로 이동</button>
+	</p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+	/*
+	body {
+		background: rgb(0, 127, 127);
+	}
+	*/
+	
+	#circle {
+		border: 1px solid white;
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		top: 150px;
+		left: 500px;
+		display: none;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	function randomNumber() {
+//		random() : 0 이상이고 1 미만인 무작위수를 발생시킨다.
+		for (var i = 0; i < 10; i++) {
+//			console.log(i + 1 + '번째 주사위 : ' + (parseInt(Math.random() * 6) + 1));
+//			floor : 내림
+//			ceil  : 올림
+//			round : 반올림
+			console.log(i + 1 + '번째 주사위 : ' + (Math.floor(Math.random() * 6) + 1));
+//			document.getElementById('random').value = Math.floor(Math.random() * 45) + 1;
+//			document.querySelector('#random').value = Math.floor(Math.random() * 45) + 1;
+			document.querySelectorAll('#random')[0].value = Math.floor(Math.random() * 45) + 1;
+		}
+	}
+	
+	function randomBgColor() {
+//		var r = Math.floor(Math.random() * 256);
+//		var g = Math.floor(Math.random() * 256);
+//		var b = Math.floor(Math.random() * 256);
+//		document.body.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+
+//		var ran = function() {
+//			return Math.floor(Math.random() * 256);
+//		}
+		var ran = () => Math.floor(Math.random() * 256);
+		document.body.style.backgroundColor = 'rgb(' + ran() + ', ' + ran() + ', ' + ran() + ')';
+	}
+	
+	function randomCircle() {
+		var radius = Math.floor(Math.random() * 100) + 1;		// 원의 반지름
+		console.log('원의 반지름 : ' + radius + 'px');
+		
+		var circle = document.getElementById('circle');
+		circle.style.width = radius * 2 + 'px';					// div 태그의 폭
+		circle.style.height = radius * 2 + 'px';				// div 태그의 높이
+		circle.style.display = 'block';							// div 태그를 화면에 보이게 한다.
+		circle.style.borderRadius = radius + 'px';				// div 태그의 모서리를 둥글게 한다.
+		
+		var ran = () => Math.floor(Math.random() * 256);
+		circle.style.backgroundColor = 'rgb(' + ran() + ', ' + ran() + ', ' + ran() + ')';
+	}
+	
+	function randomCircleArea() {
+		var circleWidth = document.getElementById('circle').style.width;
+		console.log('원의 지름 : ' + circleWidth);
+		console.log(typeof circleWidth);		// string
+
+//		var width = circleWidth.substring(0, circleWidth.length - 2);
+		var width = parseInt(circleWidth);
+		console.log(width);
+		
+		var radius = width / 2;
+		console.log('원의 반지름 : ' + radius);
+		
+		var area = Math.PI * Math.pow(radius, 2);	// 원의 너비
+		var len = 2 * Math.PI * radius;				// 원의 둘레
+		
+		document.getElementById('area').innerHTML = Math.round(area);
+		document.getElementById('len').innerHTML = Math.round(len);
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<p>
+		<h2>랜덤 숫자 생성하기</h2>
+		숫자 : <input id="random" type="text"/>
+		<input type="button" value="랜덤 숫자 만들기" onclick="randomNumber()"/>
+	</p>
+	
+	<p>
+		<h2>랜덤 배경색 변경하기</h2>
+		<input type="button" value="랜덤 배경색 변경" onclick="randomBgColor()"/>
+	</p>
+	
+	<p>
+		<h2>랜덤 크기의 원 만들기</h2>
+		<input type="button" value="랜덤 크기 원 만들기" onclick="randomCircle()"/>
+		<!-- 아래의 div 태그에 css를 randomCircle() 함수로 지정해서 원을 표시한다. -->
+		<div id="circle"></div>
+	</p>
+	
+	<p>
+		<h2>위에서 만든 랜덤 크기 원의 너비와 둘레 계산하기 </h2>
+		<input type="button" value="원의 너비와 둘레" onclick="randomCircleArea()"/><br/>
+		원의 너비 : <span id="area"></span><br/>
+		원의 둘레 : <span id="len"></span>
+	</p>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

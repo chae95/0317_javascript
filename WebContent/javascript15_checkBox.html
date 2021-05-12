@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#colorBox {
+		width: 300px;
+		height: 300px;
+		/* border: 5px solid tomato; */
+		position: relative;
+	}
+	
+	#yellow, #green, #blue, #black {
+		width: 150px;
+		height: 150px;
+		/* border: 2px solid lightgray; */
+		position: absolute;	
+	}
+	#green {
+		left: 150px;
+	}
+	#blue {
+		top: 150px;
+	}
+	#black {
+		top: 150px;
+		left: 150px;
+	}
+	
+
+</style>
+
+<script type="text/javascript">
+
+	function allSelect() {
+//		alert('allSelect()');
+//		name 속성이 all인 체크 박스를 체크하면 true가 해제하면 false가 check에 저장된다.
+		var check = document.getElementsByName('all')[0].checked;
+//		console.log(check);
+
+//		name 속성이 chk인 체크 박스를 모두 얻어온다.
+		checkBoxes = document.getElementsByName('chk');
+//		console.log(checkBoxes.length);
+//		name 속성이 chk인 체크 박스의 개수만큼 반복하며 일괄적으로 선택 또는 해제시킨다.
+
+		for (var i = 0; i < checkBoxes.length; i++){
+			checkBoxes[i].checked = check;
+		}
+	}	
+	
+	function selectColor() {
+//		alert('selectColor()');
+		checkBoxes = document.getElementsByName('chk');
+		for (var i = 0; i < checkBoxes.length; i++){
+			if (checkBoxes[i].checked){
+				console.log(checkBoxes[i].value + ' 선택  ');
+				document.getElementById(checkBoxes[i].value).style.backgroundColor = checkBoxes[i].value;
+			} else {
+				console.log(checkBoxes[i].value + '해제');
+				document.getElementById(checkBoxes[i].value).style.backgroundColor = 'white';
+				
+			}
+		}
+	}
+
+	function clearColor() {
+//		alert('clearColor()');	
+		var checkBoxes = document.querySelectorAll('#colorBox > div');
+//		console.log(checkBoxes.length);
+		for (var i = 0; i < checkBoxes.length; i++){
+			checkBoxes[i].style.backgroundColor = 'white';
+
+		}
+		document.getElementsByName('all')[0].checked = false;
+		allSelect();
+	}
+
+
+</script>
+
+</head>
+<body>
+
+	<div id="colorBox">
+		<div id="yellow">노랑</div>
+		<div id="green">녹색</div>
+		<div id="blue">파랑</div>
+		<div id="black">검정</div>
+		<!-- 구글에 css position 검색 -->
+	</div>
+	
+	<form>
+		<input type="checkbox" name="all" onclick="allSelect()"/>전체선택<br/><br/>
+		<input type="checkbox" name="chk" value="yellow"/>노랑<br/>
+		<input type="checkbox" name="chk" value="green"/>녹색<br/>
+		<input type="checkbox" name="chk" value="blue"/>파랑<br/>
+		<input type="checkbox" name="chk" value="black"/>검정<br/><br/>
+
+		<input type="button" value="선택" onclick="selectColor()"/>
+		<input type="button" value="클리어" onclick="clearColor()"/>
+	
+	</form>
+	
+	
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

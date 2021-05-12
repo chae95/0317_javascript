@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function numberObject() {
+//		Number 객체 생성 방법
+		var num1 = new Number(5);		// new를 사용해 Number 객체 선언
+		console.log('num1 : ' + num1);
+		var num2 = 7;					// 숫자 리터럴을 입력해서 Number 객체 선언
+		console.log('num2 : ' + num2);
+		
+//		document.write() : 인수로 지정한 내용을 브라우저의 내용을 전부 지우고 출력한다.
+//		document.write('num1 + num2 = ' + (num1 + num2));
+
+		var divs = document.querySelectorAll('div');
+		divs[0].innerHTML = '<h2>num1 + num2 = ' + (num1 + num2) + '</h2>'
+//		parseInt() : 문자열이나 실수를 정수로 변환한다. => 정수로 변환할 수 없으면 숫자가 아니기 때문에 NaN을 리턴한다.
+		divs[1].innerHTML = '<h2>parseInt("100") = ' + parseInt("100") + '</h2>';
+//		'100a'와 같이 숫자로 시작하고 변환할 수 없는 문자열이 뒤에나오면 변환할 수 있는 위치까지 정수로 변환한다.
+		divs[2].innerHTML = '<h2>parseInt("100a") = ' + parseInt("100a") + '</h2>';
+		divs[3].innerHTML = '<h2>parseInt("a100") = ' + parseInt("a100") + '</h2>';
+		divs[4].innerHTML = '<h2>parseInt(3.14) = ' + parseInt(3.14) + '</h2>';
+		divs[5].innerHTML = '<h2>parseInt("3.14a") + 1 = ' + (parseInt("3.14a") + 1) + '</h2>';
+		divs[6].innerHTML = '<h2>infinity = ' + (Number.MAX_VALUE + 0.000001e+308) + '</h2>';
+	}
+
+</script>
+
+</head>
+<body>
+
+	<h1>Number 객체</h1>
+	<p>
+		NaN : Not a Number, 숫자가 아니다.<br/>
+		undefined : 변수가 정의되지 않았다.<br/>
+		null : 변수는 선언되었지만 변수에 저장된 값이 없는 경우<br/>
+		infinity : 범위를 벗어난 숫자<br/>
+		<input type="button" value="Number 객체" onclick="numberObject()"/>
+	</p>
+	
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	
+</body>
+</html>

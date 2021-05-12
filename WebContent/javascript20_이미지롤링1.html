@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+
+	a {
+		font-size: 100pt;
+		text-decoration: none;
+		color: black;		
+		position: relative;
+		top: 20px;
+	}
+	img {
+		border: 2px sold pink;
+		width : 300px;
+		height: 300px;
+		vertical-align: middle;
+		position: relative;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	onload = function() {
+//		alert('onload 이벤트 실행');
+		var archs = document.querySelectorAll('a');
+		var img = document.querySelector('img');
+		var count = 3;     // 앞의 수업을 제대로 안들어서 이걸 왜 이렇게 설정해야 하는지 잘모르겠음
+		
+//		'◀'에 onclick 이벤트를 연결한다.	
+		archs[0].onclick = function() {
+//			alert('◀ 누름');
+//			getAttribute('속성이름') : 인수로 지정된 속성의 값을 얻어온다.
+			var imgAlt = img.getAttribute('alt');
+			console.log(imgAlt);
+			if (imgAlt == 'img01') {
+				alert('첫 번째 이미지입낟.');
+			} else {
+			img.setAttribute('alt', 'img0' + --count)
+			img.setAttribute('src', './images/img0' + count + '.jpg');						
+			}
+			
+		}
+			
+	
+//		'▶'에 onclick 이벤트를 연결한다.	
+		archs[1].onclick = () => {
+			var imgAlt = img.getAttribute('alt');
+			console.log(imgAlt);
+			if (imgAlt == 'img05'){
+				alert(' 마지막 이미지');
+			} else{
+			img.setAttribute('alt', 'img0' + ++count)
+			img.setAttribute('src', './images/img0' + count + '.jpg');
+			}
+		}
+			
+
+//			alert('▶ 누름')
+			
+
+	}
+
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+
+	<div>
+		<a href="#" id="lt">◀</a>
+		<img src="./images/img03.jpg" alt="img03"/>
+		<a href="#" id="gt">▶</a>
+		
+	</div>
+
+
+</body>
+</html>

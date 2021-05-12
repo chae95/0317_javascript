@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>대화형 함수</title>
+
+<script type="text/javascript">
+
+	function alertTest() {
+		alert('단순한 메시지를 출력하는 대화창');
+	}
+
+	function confirmTest() {
+//		confirm() 함수는 확인 버튼을 클릭하면 true, 취소 버튼을 클릭하면 false가 리턴된다.
+//		alert(confirm('메시지'));
+//		console.log(confirm('메시지'));
+		if (confirm('배경색을 바꿀래?')) {
+			document.body.style.backgroundColor = 'black';
+			document.body.style.color = 'white';
+		}
+	}
+
+	function promptTest() {
+//		prompt() 함수는 데이터를 입력하고 확인 버튼을 클릭하면 입력한 데이터가 리턴되고 취소 버튼을 클릭하면 
+//		null이 리턴된다.
+//		console.log(prompt('메시지'));
+//		prompt() 함수의 2번째 인수로 안내 메시지를 지정할 수 있다.
+//		console.log(prompt('메시지', '안내 메시지'));
+		var menu = prompt('점심은 뭘 먹을까요?\n(1.짜장면, 2.짬뽕, 3.볶음밥)');
+//		console.log(typeof menu);		// string
+		
+		switch (menu) {
+			case '1':
+				alert('짜장면');
+				break;
+			case '2':
+				alert('짬뽕');
+				break;
+			case '3':
+				alert('볶음밥');
+				break;
+			default:
+				alert('짜장면, 짬뽕, 볶음밥 밖에 먹을게 없으니 1, 2, 3 중에 하나만 입력하세요');
+				break;
+		}
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<h1>window 객체에서 제공되는 대화형 함수</h1>
+	<p>alert() : <button type="button" onclick="alertTest()">클릭</button></p>
+	<p>confirm() : <button type="button" onclick="confirmTest()">클릭</button></p>
+	<p>prompt() : <button type="button" onclick="promptTest()">클릭</button></p>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
